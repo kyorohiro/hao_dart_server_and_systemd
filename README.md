@@ -15,4 +15,47 @@ $ ufw enable
 $ ufw status
 ```
 
-## 
+## Setup
+
+./darthelloserver.sh
+
+```
+#!/bin/sh
+
+cd /app/hao_dart_server_and_systemd; dart bin/main.dart
+
+```
+
+
+./darthelloserver.service
+
+```
+[Unit]
+Description=Dart Hello Http Server
+After=syslog.target network-online.target
+
+[Service]
+ExecStart = /opt/darthelloserver.sh
+Restart = always
+Type = simple
+
+[Install]
+WantedBy=multi-user.target
+WantedBy=network-online.target
+
+```
+
+```
+$ cp darthelloserver.sh /opt/darthelloserver.sh
+$ chmod 655 /opt/darthelloserver.sh
+$ cp darthelloserver.service /etc/systemd/system/darthelloserver.service
+$ systemctl enable darthelloserver
+$ systemctl start darthelloserver
+```
+
+```
+$ systemctl list-unit-files | grep network
+$ systemctl enable systemd-networkd
+$ systemctl enable systemd-networkd-wait-online
+```
+

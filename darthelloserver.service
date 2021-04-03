@@ -1,0 +1,12 @@
+[Unit]
+Description=Dart Hello Http Server
+After=syslog.target network-online.target
+
+[Service]
+ExecStart = /opt/darthelloserver.sh
+Restart = always
+Type = simple
+
+[Install]
+WantedBy=multi-user.target
+WantedBy=network-online.target
