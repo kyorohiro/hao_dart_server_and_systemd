@@ -17,13 +17,19 @@ $ ufw status
 
 ## Setup
 
+
+```
+$ dart2native bin/main.dart 
+$ mv bin/main.exe /opt/main.exe
+```
+
 ./darthelloserver.sh
 
 ```
 #!/bin/sh
 
-cd /app/hao_dart_server_and_systemd; dart bin/main.dart
-
+#cd /app/hao_dart_server_and_systemd; dart bin/main.dart
+/opt/main.exe
 ```
 
 
