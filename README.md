@@ -99,3 +99,15 @@ IMPORTANT NOTES:
 
 /etc/letsencrypt/, /var/log/letsencrypt/, /var/lib/letsencrypt/
 
+
+# Update SSL
+
+```
+$ crontab -u root -e
+
+```
+
+```
+00 04 03 * * certbot renew && systemctl restart darthelloserver 
+
+```
