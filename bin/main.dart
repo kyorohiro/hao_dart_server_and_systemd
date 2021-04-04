@@ -27,7 +27,7 @@ void main(List<String> arguments) async {
       }
     }
 
-    var httpServer = await io.HttpServer.bind("0.0.0.0", 80);
+    var httpServer = await io.HttpServer.bind("0.0.0.0", 8080);
     print("binded 80");
     httpServer.listen((request) {
       onRequest(request);
@@ -38,7 +38,7 @@ void main(List<String> arguments) async {
     io.SecurityContext context = new io.SecurityContext();
     context.useCertificateChain(crt);
     context.usePrivateKey(key, password: "");
-    var httpsServer = await io.HttpServer.bindSecure("0.0.0.0", 443, context);
+    var httpsServer = await io.HttpServer.bindSecure("0.0.0.0", 8443, context);
     httpsServer.listen((request) {
       onRequest(request);
     });
